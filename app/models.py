@@ -5,6 +5,7 @@ class PItch(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255))
     description = db.Column(db.String(1000))
+    category_id = db.Column(db.Integer,db.ForeignKey('categories.id'))
 
 
     def __repr__(self):
@@ -14,6 +15,7 @@ class Category(db.Model):
     __tablename = 'categories'
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255))
+    pitches = db.relationship('Pitch',backref = 'category',lazy="dynamic")
 
 
     def __repr__(self):
