@@ -14,6 +14,6 @@ def index():
     Pickup = Pitch.query.filter_by(category = "Pickup")
     title = 'Home- welcome to the best pitches website online'
 
-    return render_template('index.html', titlt = title,pitch =pitch, Sales= Sales, Investor = Investor, Employees = Employees, Pickup = Pickup)
+    return render_template('index.html', title = title,pitch =pitch, Sales= Sales, Investor = Investor, Employees = Employees, Pickup = Pickup)
 
 

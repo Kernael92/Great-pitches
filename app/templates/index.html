@@ -1,6 +1,14 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
+
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
 {% block content%}
 <div class="container">
     <h1>Pitch Categories</h1>
@@ -14,7 +22,7 @@
     
         </li>
         <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="Employees">Empoyees</a>
+                <a class="nav-link active" data-toggle="tab" href="Employees">Employees</a>
     
         </li>
         <li class="nav-item">
@@ -25,19 +33,22 @@
     </ul>
     <div class="tab-content">
         <div id= "Sales" class="container tab-pane active">
-            {{macro.displayCategoryList(sales)}}
+          
+           
+            {{macro.displayPitchList(sales)}}
 
         </div>
         <div id= "Investor" class="container tab-pane active">
-                {{macro.displayCategoryList(investor)}}
+                
+                {{macro.displayPitchList(investor)}}
     
         </div>
         <div id= "Employees" class="container tab-pane active">
-                {{macro.displayCategoryList(employees)}}
+                {{macro.displayPitchList(employees)}}
     
         </div>
         <div id= "Pickup" class="container tab-pane active">
-                {{macro.displayCategoryList(pickup)}}
+                {{macro.displayPitchList(pickup)}}
         </div>
 
     </div >
