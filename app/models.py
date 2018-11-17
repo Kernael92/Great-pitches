@@ -19,10 +19,14 @@ class Pitch(db.Model):
     def __repr__(self):
         return f'Pitch {self.description}'
 class Comment(db.Model):
+    all_comments = []
     __tablename__ = 'comments'
     id = db.Column(db.Integer,primary_key = True)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     description = db.Column(db.Text)
+
+    def save_comments(self):
+        Comment.all_commments(self)
 
     def __repe__(self):
         return f"Comment : id {self.id} comment : {self.description}"
