@@ -1,4 +1,4 @@
-{% extends 'bootstrap/base.html'%}
+{% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
 {% block content%}
@@ -18,27 +18,26 @@
     
         </li>
         <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="Pickup">Pickup lines/a>
+                <a class="nav-link active" data-toggle="tab" href="Pickup">Pickup lines</a>
     
         </li>
         
     </ul>
     <div class="tab-content">
         <div id= "Sales" class="container tab-pane active">
-            {{macro.display(salespitch)}}
+            {{macro.displayCategoryList(sales)}}
 
         </div>
         <div id= "Investor" class="container tab-pane active">
-                {{macro.display(investorpitch)}}
+                {{macro.displayCategoryList(investor)}}
     
         </div>
         <div id= "Employees" class="container tab-pane active">
-                {{macro.display(employeespitch)}}
+                {{macro.displayCategoryList(employees)}}
     
         </div>
         <div id= "Pickup" class="container tab-pane active">
-                {{macro.display(pickuplinespitch)}}
-    
+                {{macro.displayCategoryList(pickup)}}
         </div>
 
     </div >
