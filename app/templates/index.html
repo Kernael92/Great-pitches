@@ -31,24 +31,24 @@
         </li>
         
     </ul>
-    <div class="tab-content">
+    <div class="panel">
         <div id= "Sales" class="container tab-pane active">
           
-           
-            {{macro.displayPitchList(sales)}}
+            {{macro.display(Sales)}}
 
         </div>
         <div id= "Investor" class="container tab-pane active">
+               
+                {{macro.display(Investor)}}
                 
-                {{macro.displayPitchList(investor)}}
     
         </div>
         <div id= "Employees" class="container tab-pane active">
-                {{macro.displayPitchList(employees)}}
+                {{macro.display(Employees)}}
     
         </div>
         <div id= "Pickup" class="container tab-pane active">
-                {{macro.displayPitchList(pickup)}}
+                {{macro.display(Pickup)}}
         </div>
 
     </div >

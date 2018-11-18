@@ -8,16 +8,17 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    pitch = Pitch.query.filter_by().first()
-    Sales = Pitch.query.filter_by(category = "Sales")
-    Investor = Pitch.query.filter_by(category = "Investor")
-    Employees = Pitch.query.filter_by(category = "Employees")
-    Pickup = Pitch.query.filter_by(category = "Pickup")
+    pitches = Pitch.query.filter_by().first()
+    
+    salespitch = Pitch.query.filter_by(category = "Sales")
+    investorpitch = Pitch.query.filter_by(category = "Investor")
+    employeespitch = Pitch.query.filter_by(category = "Employees")
+    pickuplinepitch = Pitch.query.filter_by(category = "Pickup")
     title = 'Home- welcome to the best pitches website online'
 
-    return render_template('index.html', title = title,pitch =pitch, Sales= Sales, Investor = Investor, Employees = Employees, Pickup = Pickup)
+    return render_template('index.html', title = title,pitches =pitches, Sales=salespitch,Investor=investorpitch,Employees=employeespitch,Pickup=pickuplinepitch)
 
-@main.route('/comment/new/<int: pitch_id>', methods = ['GET', 'POST'])
+@main.route('/pitch/comment/new/<int:pitch_id>', methods = ['GET', 'POST'])
 def new_comment(pitch_id):
     form = commentForm()
     pitch=Pitch.query.get(pitch_id)

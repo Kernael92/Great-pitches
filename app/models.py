@@ -12,12 +12,21 @@ class Pitch(db.Model):
 
     
     @classmethod
-    def get_pitches(cls,id):
-        pitches = Pitch.query.order_by(id).desc().all()
+    def get_pitches(cls):
+        pitches = Pitch.query.all()
         return pitches
 
     def __repr__(self):
         return f'Pitch {self.description}'
+
+    @classmethod
+    def get_pitches_by_category(cls, category):
+        '''
+        '''
+        pitches = Pitch.query.filter_by(category)
+        return pitches
+         
+
 class Comment(db.Model):
     all_comments = []
     __tablename__ = 'comments'
@@ -26,10 +35,13 @@ class Comment(db.Model):
     description = db.Column(db.Text)
 
     def save_comments(self):
-        Comment.all_commments(self)
+        db.session.add(self)
+        db.session.commit()
 
     def __repe__(self):
         return f"Comment : id {self.id} comment : {self.description}"
+
+
 
 
 

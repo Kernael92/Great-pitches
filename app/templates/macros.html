@@ -1,15 +1,15 @@
-{% macro displayPitchList(pitch_list) %}
+{% macro display(category_list) %}
 
 <div class= "row">
-    {% if pitch in pitch_list %}
-        {% for pitch in pitch_list %}
+    {% if category in category_list %}
+        {% for category in category_list %}
         <div class= "col-md-6">
-            <h3 class="card-header">{{pitch.name}}</h3>
-            <h3 class="card-header">{{pitch.category}}</h3>
+            <!-- <h3 class="card-header">{{pitch.name}}</h3> -->
+            <h3 class="card-header">{{category.category}}</h3>
             
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                        <h2>{{pitch.description}}</h2>
+                        <h2>{{category.description}}</h2>
 
                 </blockquote>
                 
