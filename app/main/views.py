@@ -12,6 +12,7 @@ def index():
     pitches = Pitch.query.filter_by().first()
     
     salespitch = Pitch.query.filter_by(category = "Sales")
+    print(Sales)
     investorpitch = Pitch.query.filter_by(category = "Investor")
     employeespitch = Pitch.query.filter_by(category = "Employees")
     pickuplinepitch = Pitch.query.filter_by(category = "Pickup")
