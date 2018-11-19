@@ -12,7 +12,7 @@ def index():
     pitches = Pitch.query.filter_by().first()
     
     salespitch = Pitch.query.filter_by(category = "Sales")
-    print(Sales)
+    # print(Sales)
     investorpitch = Pitch.query.filter_by(category = "Investor")
     employeespitch = Pitch.query.filter_by(category = "Employees")
     pickuplinepitch = Pitch.query.filter_by(category = "Pickup")
@@ -21,8 +21,8 @@ def index():
     return render_template('index.html', title = title,pitches =pitches, Sales=salespitch,Investor=investorpitch,Employees=employeespitch,Pickup=pickuplinepitch)
 
 @main.route('/pitch/comment/new/<int:pitch_id>', methods = ['GET', 'POST'])
+@login_required
 def new_comment(pitch_id):
-    @login_required
     form = commentForm()
     pitch=Pitch.query.get(pitch_id)
     if form.validate_on_submit():
