@@ -1,7 +1,7 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for,abort
 from . import main
 from .. import db
-from ..models import Pitch,Comment 
+from ..models import Pitch,Comment,User 
 from .forms import commentForm
 from flask_login import login_required
 @main.route('/', methods = ['GET','POST'])
@@ -35,5 +35,12 @@ def new_comment(pitch_id):
     
     all_comments = Comment.query.filter_by(pitch_id=pitch_id).all()
     return render_template('comments.html',form = form ,comment = all_comments, pitch=pitch)
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
+
+    if user is None:
+        abort(404)
+    return render_template("profile/profile.html", user = user)
 
 
