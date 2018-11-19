@@ -3,6 +3,7 @@ from . import main
 from .. import db
 from ..models import Pitch,Comment 
 from .forms import commentForm
+from flask_login import login_required
 @main.route('/', methods = ['GET','POST'])
 def index():
     '''
@@ -20,6 +21,7 @@ def index():
 
 @main.route('/pitch/comment/new/<int:pitch_id>', methods = ['GET', 'POST'])
 def new_comment(pitch_id):
+    @login_required
     form = commentForm()
     pitch=Pitch.query.get(pitch_id)
     if form.validate_on_submit():

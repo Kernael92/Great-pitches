@@ -1,5 +1,6 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin
 
 class Pitch(db.Model):
     __tablename__ = 'pitches'
@@ -42,10 +43,12 @@ class Comment(db.Model):
     def __repe__(self):
         return f"Comment : id {self.id} comment : {self.description}"
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255))
+    username = db.Column(db.String(255),index = True)
+    email = db.Column(db.String(255),unique = True,index = True)
+    password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
 
     @property
