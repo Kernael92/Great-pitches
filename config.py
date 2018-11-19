@@ -7,6 +7,8 @@ class Config:
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kernaeljoy:benter92@localhost/pitches'
     SECRET_KEY='Powerfull SecretKey'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
+
     pass
 class ProdConfig(Config):
     '''
