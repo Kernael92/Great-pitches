@@ -6,6 +6,7 @@ class Config:
     General configuration parent class
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kernaeljoy:benter92@localhost/pitches'
+    SECRET_KEY='Powerfull SecretKey'
     pass
 class ProdConfig(Config):
     '''
