@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from .. import db,photos
-from ..models import Pitch,Comment,User 
+from ..models import Pitch,Comment,User,Upvote 
 from .forms import commentForm,UpdateProfile,PitchForm
 from flask_login import login_required, current_user
 @main.route('/', methods = ['GET','POST'])
@@ -70,7 +70,7 @@ def update_pic(uname):
 @login_required
 def new_pitch():
     form = PitchForm()
-    # my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
+    my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
     if form.validate_on_submit():
         description = form.description.data
         name = form.name.data
@@ -83,5 +83,19 @@ def new_pitch():
         
         
         return redirect(url_for('main.index'))
-    return render_template('pitches.html',form=form)
+    return render_template('pitches.html',form=form,my_upvotes = my_upvotes)
+@main.route('/pitch/upvote/<int:pitch_id>/upvote', methods = ['GET', 'POST'])
+@login_required
+def upvote(pitch_id):
+    pitch = Pitch.query.get(pitch_id)
+    user = current_user
+    pitch_upvotes = Upvote.query.filter_by(pitch_id= pitch_id)
+    
+    if Upvote.query.filter(Upvote.user_id==user.id,Upvote.pitch_id==pitch_id).first():
+        new_upvote = Upvote(pitch_id=pitch_id, user = current_user)
+        db.session.add(new_upvote)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('Upvote.html',pitch = pitch, pitch_upvotes = pitch_upvotes)
+
 
