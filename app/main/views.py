@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from .. import db,photos
 from ..models import Pitch,Comment,User 
-from .forms import commentForm,UpdateProfile
+from .forms import commentForm,UpdateProfile,PitchForm
 from flask_login import login_required, current_user
 @main.route('/', methods = ['GET','POST'])
 def index():
@@ -66,4 +66,22 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname = uname))
+@main.route('/pitches/new/', methods = ['GET','POST'])
+@login_required
+def new_pitch():
+    form = PitchForm()
+    # my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
+    if form.validate_on_submit():
+        description = form.description.data
+        name = form.name.data
+        owner_id = current_user
+        category = form.category.data
+        print(current_user._get_current_object().id)
+        new_pitch = Pitch(owner_id =current_user._get_current_object().id, name = name,description=description,category=category)
+        db.session.add(new_pitch)
+        db.session.commit()
+        
+        
+        return redirect(url_for('main.index'))
+    return render_template('pitches.html',form=form)
 
