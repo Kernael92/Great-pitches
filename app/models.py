@@ -11,16 +11,21 @@ class Pitch(db.Model):
     __tablename__ = 'pitches'
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255))
-    description = db.Column(db.String(2000))
-    category = db.Column(db.String)
+    description = db.Column(db.String(2000), index= True)
+    category = db.Column(db.String(255), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     comments = db.relationship('Comment',backref = 'pitch', lazy='dynamic')
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
     
 
 
     
     @classmethod
-    def get_pitches(cls):
-        pitches = Pitch.query.all()
+    def get_pitches(cls,id):
+        pitches = Pitch.query.order_by(pitch_id = id).desc.all()
         return pitches
 
     def __repr__(self):
@@ -40,6 +45,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     description = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False )
 
     def save_comments(self):
         db.session.add(self)
@@ -57,6 +63,9 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
+    pitch = db.relationship('Pitch',backref = 'user', lazy = 'dynamic')
+    comment = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
+    
 
 
     @property

@@ -9,7 +9,7 @@
             
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                        <h2>{{category.description}}</h2>
+                    <h2>{{category.description}}</h2>
 
                 </blockquote>
                 
@@ -30,7 +30,7 @@
 			{% for comment in comments %}
 				<div class="row">
 						<p>{{ comment.description }}</p>
-						<!-- <small> posted by {{comment.user.username}}</small> -->
+						<small> posted by {{comment.user.username}}</small>
 				</div>
 			{% endfor %}
 			{% else %}
