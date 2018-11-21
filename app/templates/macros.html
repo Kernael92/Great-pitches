@@ -1,47 +1,35 @@
 {% macro display(category_list) %}
 
 <div class= "row">
-    {% if category in category_list %}
-        {% for category in category_list %}
-        <div class= "col-md-6">
-            <!-- <h3 class="card-header">{{pitch.name}}</h3> -->
-            <h3 class="card-header">{{category.category}}</h3>
+    {% for category in category_list %}
+    <div class= "col-md-6">
+        <h3 class="card-header">{{category.name}}</h3>
+        
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <h2>{{category.description}}</h2>
+
+            </blockquote>
             
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <h2>{{category.description}}</h2>
-
-                </blockquote>
-                
-
-            </div>
-
         </div>
 
-        {% endfor %}
-    {% endif %}
-</div>
+    </div>
 
+    {% endfor %}
+</div>
 {% endmacro  %}
+
 {% macro displayComment(comments) %}
 <ul>
 
-			{% if comments %}
-			{% for comment in comments %}
-				<div class="row">
-						<p>{{ comment.description }}</p>
-						<small> posted by {{comment.user.username}}</small>
-				</div>
-			{% endfor %}
-			{% else %}
-
-			<h3>This pitch does not have any comments yet !</h3>
-			{%endif%}
-
-	</ul>
-	
-			
+    {% for comment in comments %}
+        <div class="row">
+                <p>{{ comment.description }}</p>
+                <small> posted by {{comment.user.username}}</small>
+        </div>
+    {% endfor %}
 
 
+</ul>
 {% endmacro %}
 

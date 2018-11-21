@@ -10,12 +10,13 @@
 					<div class="list-group">
 						<a href="#">
 							<div class="list-item">
-                                <p>{{pitch.id}}</p>
-                                <p>{{pitch.name}</p>
-                                
-							</div>
+                               
+                            </div>
+                            <p>{{ pitch.category }}</p>
+                            <p>{{ pitch.name }}</p>
+                            
 							<h4>{{ pitch.description }}</h4>
-							<h6> Posted by {{user.username}}.</h6>
+							<h6> Posted by {{pitch.owner_id.username}}.</h6>
 						</a>
 					</div>
 				{% endfor %}
