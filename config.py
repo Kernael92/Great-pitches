@@ -5,6 +5,9 @@ class Config:
     '''
     General configuration parent class
     '''
+    # simple mde configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
     
     SECRET_KEY='Powerfull SecretKey'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
