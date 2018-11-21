@@ -10,6 +10,9 @@
                 <h2>{{category.description}}</h2>
 
             </blockquote>
+                <a href="{{url_for('main.new_comment',pitch_id = category.id)}}" class="btn btn-success"> Add a comment</a>
+                <a href="{{url_for('main.upvote',pitch_id = category.id)}}" class= "btn btn-success btn-sm"><i class="far fa-thumbs-up"></i>Upvote <span>{{category.upvotes.count()}}</span></a>
+                <a href="{{url_for('main.downvote',pitch_id = category.id)}}" class= "btn btn-success btn-sm"><i class="far fa-thumbs-down"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
             
         </div>
 

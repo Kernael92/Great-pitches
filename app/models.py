@@ -16,6 +16,7 @@ class Pitch(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     comments = db.relationship('Comment',backref = 'pitch', lazy='dynamic')
     upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
+    downvotes = db.relationship('Downvote', backref = 'pitch', lazy = 'dynamic')
 
     def save_pitch(self):
         db.session.add(self)
@@ -65,6 +66,7 @@ class User(UserMixin,db.Model):
     pitch = db.relationship('Pitch',backref = 'user', lazy = 'dynamic')
     comment = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
     upvotes = db.relationship('Upvote', backref = 'user', lazy = 'dynamic')
+    downvotes = db.relationship('Downvote', backref = 'user', lazy = 'dynamic')
     
 
 
