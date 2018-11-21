@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from .. import db,photos
 from ..models import Pitch,Comment,User,Upvote,Downvote 
-from .forms import commentForm,UpdateProfile,PitchForm
+from .forms import commentForm,UpdateProfile,PitchForm,UpvoteForm,Downvote
 from flask_login import login_required, current_user
 @main.route('/', methods = ['GET','POST'])
 def index():
@@ -87,6 +87,7 @@ def new_pitch():
 @main.route('/pitch/upvote/<int:pitch_id>/upvote', methods = ['GET', 'POST'])
 @login_required
 def upvote(pitch_id):
+    form = UpvoteForm()
     pitch = Pitch.query.get(pitch_id)
     user = current_user
     pitch_upvotes = Upvote.query.filter_by(pitch_id= pitch_id)
@@ -96,17 +97,20 @@ def upvote(pitch_id):
         db.session.add(new_upvote)
         db.session.commit()
         return redirect(url_for('main.index'))
-    return render_template('Upvote.html',pitch = pitch, pitch_upvotes = pitch_upvotes)
+    return render_template('Upvote.html',pitch = pitch, pitch_upvotes = pitch_upvotes, form = form)
 @main.route('/pitch/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
 @login_required
 def downvote(pitch_id):
+    form = Downvote
     pitch = Pitch.query.get(pitch_id)
     user = current_user
-    pitch_downvotes = Downvote.query.filter_by(pitch_id= pitch_id)
+    pitch_downvotes = Downvote.query.filter_by(pitch_id = pitch_id)
     
     if Downvote.query.filter(Downvote.user_id==user.id,Downvote.pitch_id==pitch_id).first():
         new_downvote = Downvote(pitch_id=pitch_id, user = current_user)
-        new_downvote.save_downvotes()
-    return redirect(url_for('main.index'))
+        db.session.add(new_downvote)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('downvote.html',pitch = pitch, pitch_downvotes = pitch_downvotes, form = form)
 
 

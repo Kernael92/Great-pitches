@@ -14,6 +14,6 @@ class PitchForm(FlaskForm):
 	category = RadioField('Label', choices=[ ('Sales','Sales'), ('Investor','Investor'),('Employees','Employees'),('Pickup','Pickup')],validators=[Required()])
 	submit = SubmitField('Submit')
 class UpvoteForm(FlaskForm):
-	submit = SubmitField()
+	submit = SubmitField('Submit')
 class Downvote(FlaskForm):
-	submit = SubmitField()
+	submit = SubmitField('Submit')

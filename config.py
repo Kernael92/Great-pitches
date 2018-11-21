@@ -5,7 +5,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kernaeljoy:benter92@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kernaeljoy:benter92@localhost/pitches_test'
     SECRET_KEY='Powerfull SecretKey'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     #email configurations
@@ -32,11 +32,13 @@ class DevConfig(Config):
     args:
         Config: The parent configuration class with the General configuration settings 
     '''
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kernaeljoy:benter92@localhost/pitches'
 
     DEBUG = True
 
 config_options = {
     'development':DevConfig,
     'production':ProdConfig
+    'test':TestConfig
 }
 
