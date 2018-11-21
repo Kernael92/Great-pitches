@@ -4,6 +4,10 @@ from .. import db,photos
 from ..models import Pitch,Comment,User,Upvote,Downvote 
 from .forms import commentForm,UpdateProfile,PitchForm,UpvoteForm,Downvote
 from flask_login import login_required, current_user
+import markdown2
+
+
+
 @main.route('/', methods = ['GET','POST'])
 def index():
     '''
@@ -112,5 +116,12 @@ def downvote(pitch_id):
         db.session.commit()
         return redirect(url_for('main.index'))
     return render_template('downvote.html',pitch = pitch, pitch_downvotes = pitch_downvotes, form = form)
+@main.route('/pitch/<int:id>')
+def single_pitch(id):
+    pitch = Pitch.query.get(id)
+    if pitch is None:
+        abort(404)
+    format_pitch =markdown2.markdown(pitch,extras = ["code-friendly", "fenced-code-blocks"])
+    return render_template('pitches.html',pitch = pitch, format_pitch = format_pitch)
 
 

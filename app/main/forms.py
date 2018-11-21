@@ -10,7 +10,7 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('submit')
 class PitchForm(FlaskForm):
 	name = StringField('name', validators=[Required()])
-	description = TextAreaField("Write your pitch here",validators=[Required()])
+	description = TextAreaField("Write your pitch here")
 	category = RadioField('Label', choices=[ ('Sales','Sales'), ('Investor','Investor'),('Employees','Employees'),('Pickup','Pickup')],validators=[Required()])
 	submit = SubmitField('Submit')
 class UpvoteForm(FlaskForm):

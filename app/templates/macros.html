@@ -17,6 +17,9 @@
                 <a href="{{url_for('main.downvote',pitch_id = category.id)}}" class= "btn btn-success btn-sm"><i class="far fa-thumbs-down"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
             
         </div>
+        <div>
+            <h2> <a href="{{url_for('main.single_pitch',id=pitch.id)}}">{{pitch.name}}</a> </h2>
+        </div>
 
     </div>
 
