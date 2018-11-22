@@ -52,7 +52,7 @@ No known bugs so far
 ## Support Details
 Contact me for further help via kernaelapuko5@gmail.com
 
-##Licence
+## Licence
 * MIT license
 * Copyright <2018> <KERNAEL APUKO>
 
