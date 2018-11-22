@@ -24,3 +24,8 @@ a.hover{
     transform: rotate(360deg);
 
 }
+@media only screen and (max-width: 1850px) {
+    body {
+        background-color: lightblue;
+    }
+}

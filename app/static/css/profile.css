@@ -14,3 +14,9 @@ a.hover {
     color: green;
 
 }
+
+@media only screen and (max-width: 1850px) {
+    body {
+        background-color: lightblue;
+    }
+}
