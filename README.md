@@ -30,7 +30,28 @@
  
 
 ## Dependencies
-  * 
+* blinker==1.4
+* Click==7.0
+* dominate==2.3.4
+* Flask==1.0.2
+* Flask-Bootstrap==3.3.7.1
+* Flask-Login==0.4.1
+* *Flask-Mail==0.9.1
+* Flask-Migrate==2.3.0
+* Flask-SimpleMDE==0.3.0
+* Flask-Uploads==0.2.1
+* gunicorn==19.9.0
+* itsdangerous==1.1.0
+* Jinja2==2.10
+* markdown2==2.3.6
+* psycopg2==2.7.6.1
+* python-dateutil==2.7.5
+* python-editor==1.0.3
+* six==1.11.0
+* SQLAlchemy==1.2.14
+* visitor==0.1.3
+* Werkzeug==0.14.1
+* WTForms==2.2.1*
 
 
 ## User Stories

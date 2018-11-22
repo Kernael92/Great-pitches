@@ -7,7 +7,7 @@ body {
     padding: 20px;
     border-style: outset;
     border-color: silver;
-    background-color: maroon;
+    background-color: lightblue;
 
 }
 a.hover {
@@ -17,6 +17,6 @@ a.hover {
 
 @media only screen and (max-width: 1850px) {
     body {
-        background-color: lightblue;
+        background-color: maroon;
     }
 }

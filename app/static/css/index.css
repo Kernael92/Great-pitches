@@ -3,7 +3,7 @@ body {
     margin: 20px;
     padding: 20px;
     border-style: ridge;
-    background-color: maroon;
+    background-color: lightblue;
     background-repeat: no-repeat;
 }
 h3 {
@@ -26,6 +26,6 @@ a.hover{
 }
 @media only screen and (max-width: 1850px) {
     body {
-        background-color: lightblue;
+        background-color: maroon;
     }
 }
