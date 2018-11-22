@@ -10,7 +10,7 @@ h3 {
     font-style: cursive;
 
 }
-a:hover{
+a.hover{
     color: maroon;
 }
 .row {

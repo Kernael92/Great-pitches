@@ -1,0 +1,9 @@
+body {
+    border: 20px;
+    margin: 20px;
+    padding: 20px;
+    border-style: ridge;
+    background-color: lightgreen;
+    background-repeat: no-repeat;
+
+}
