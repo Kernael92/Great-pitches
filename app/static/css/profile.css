@@ -1,0 +1,12 @@
+.img-thumbnail {
+    border-radius: 50%;
+}
+body {
+    border: 20px;
+    margin: 20px;
+    padding: 20px;
+    border-style: outset;
+    border-color: silver;
+    background-color: maroon;
+
+}

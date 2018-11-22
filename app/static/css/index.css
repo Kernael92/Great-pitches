@@ -1,0 +1,26 @@
+body {
+    border: 20px;
+    margin: 20px;
+    padding: 20px;
+    border-style: ridge;
+    background-color: maroon;
+    background-repeat: no-repeat;
+}
+h3 {
+    font-style: cursive;
+
+}
+a:hover{
+    color: maroon;
+}
+.row {
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
+
+
+}
+.row:hover {
+    -webkit-transform: rotate(180deg); /* Safari */
+    transform: rotate(360deg);
+
+}
