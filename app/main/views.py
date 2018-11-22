@@ -74,14 +74,15 @@ def update_pic(uname):
 @login_required
 def new_pitch():
     form = PitchForm()
+  
     my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
     if form.validate_on_submit():
         description = form.description.data
         name = form.name.data
-        owner_id = current_user
+        user_id = current_user
         category = form.category.data
         print(current_user._get_current_object().id)
-        new_pitch = Pitch(owner_id =current_user._get_current_object().id, name = name,description=description,category=category)
+        new_pitch = Pitch(user_id =current_user._get_current_object().id, name = name,description=description,category=category)
         db.session.add(new_pitch)
         db.session.commit()
         
