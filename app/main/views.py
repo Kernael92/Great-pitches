@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from .. import db,photos
 from ..models import Pitch,Comment,User,Upvote,Downvote 
-from .forms import commentForm,UpdateProfile,PitchForm,UpvoteForm,Downvote
+from .forms import commentForm,UpdateProfile,PitchForm,UpvoteForm,DownvoteForm
 from flask_login import login_required, current_user
 import markdown2
 
@@ -106,7 +106,7 @@ def upvote(pitch_id):
 @main.route('/pitch/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
 @login_required
 def downvote(pitch_id):
-    form = Downvote
+    form = DownvoteForm()
     pitch = Pitch.query.get(pitch_id)
     user = current_user
     pitch_downvotes = Downvote.query.filter_by(pitch_id = pitch_id)

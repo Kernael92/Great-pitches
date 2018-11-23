@@ -135,7 +135,7 @@ class Downvote(db.Model):
     
     @classmethod
     def get_downvotes(cls,id):
-        downvote = Downvote.query.filter_by(pitch_id=id).all()
+        downvote = Downvotedb.query.filter_by(pitch_id=id).all()
         return downvote
 
     @classmethod

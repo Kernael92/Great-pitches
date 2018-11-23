@@ -15,5 +15,5 @@ class PitchForm(FlaskForm):
 	submit = SubmitField('Submit')
 class UpvoteForm(FlaskForm):
 	submit = SubmitField('Submit')
-class Downvote(FlaskForm):
+class DownvoteForm(FlaskForm):
 	submit = SubmitField('Submit')
